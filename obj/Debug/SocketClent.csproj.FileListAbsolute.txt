@@ -1,0 +1,9 @@
+D:\C#-WORK\SocketClent\bin\Debug\SocketClent.exe
+D:\C#-WORK\SocketClent\bin\Debug\SocketClent.pdb
+D:\C#-WORK\SocketClent\obj\Debug\SocketClent.csproj.AssemblyReference.cache
+D:\C#-WORK\SocketClent\obj\Debug\SocketClent.Form1.resources
+D:\C#-WORK\SocketClent\obj\Debug\SocketClent.Properties.Resources.resources
+D:\C#-WORK\SocketClent\obj\Debug\SocketClent.csproj.GenerateResource.cache
+D:\C#-WORK\SocketClent\obj\Debug\SocketClent.csproj.CoreCompileInputs.cache
+D:\C#-WORK\SocketClent\obj\Debug\SocketClent.exe
+D:\C#-WORK\SocketClent\obj\Debug\SocketClent.pdb
