@@ -55,13 +55,49 @@ namespace SocketClent
             {
                 textBox3.AppendText("开始获取ip... " + Environment.NewLine);
             }));
-            IPHostEntry iPHostEntry = Dns.GetHostEntry(IPtextBox.Text);
-            IPAddress[] iPAddresses = iPHostEntry.AddressList;
-            foreach (IPAddress ip in iPAddresses)
+            IPAddress[] iPAddresses = null;
+            if (checkBox2.Checked)
             {
-                Console.WriteLine(ip);
+                IPHostEntry iPHostEntry = Dns.GetHostEntry(IPtextBox.Text.Trim());
+                iPAddresses = iPHostEntry.AddressList;
+                foreach (IPAddress ip in iPAddresses)
+                {
+                    Console.WriteLine(ip);
+                }
             }
-            if (iPAddresses.Length > 0)
+            else
+            {
+                Console.WriteLine(IPtextBox.Text.Trim());
+                if (!string.IsNullOrEmpty(IPtextBox.Text.Trim()))
+                {
+                    try
+                    {
+                        Console.WriteLine("stringIsNullorEmpty:" + IPtextBox.Text.Trim());
+                        iPAddresses = new IPAddress[1];
+                        iPAddresses[0] = IPAddress.Parse(IPtextBox.Text.Trim());
+                        Console.WriteLine(iPAddresses[0]);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("输入的IP地址格式错误！");
+                        this.BeginInvoke(new System.Threading.ThreadStart(delegate ()
+                        {
+                            button1.Enabled = true;
+                        }));
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("输入的IP地址格式错误！");
+                    this.BeginInvoke(new System.Threading.ThreadStart(delegate ()
+                    {
+                        button1.Enabled = true;
+                    }));
+                    return;
+                }
+            }
+            if ( iPAddresses != null &&  iPAddresses.Length > 0)
             {
                 this.BeginInvoke(new System.Threading.ThreadStart(delegate ()
                 {
@@ -95,7 +131,6 @@ namespace SocketClent
                     {
                         this.BeginInvoke(new System.Threading.ThreadStart(delegate ()
                         {
-
                             timerSocketSend.Start();
                         }));
                     }
